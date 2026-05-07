@@ -1,0 +1,36 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "mentor": {
+      "description": "Senior Buddy — ментор для junior Python-разработчика. Read-only режим: советует, объясняет, но не пишет код за джуна.",
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "prompt": "{file:./.opencode/agents/mentor.md}",
+      "permission": {
+        "read": "allow",
+        "edit": "allow",
+        "write": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "bash": "ask",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "todowrite": "allow",
+        "todoread": "allow"
+      }
+    }
+  },
+  "default_agent": "mentor",
+  "instructions": [
+    "./.opencode/instructions.md",
+    "./AGENTS.md"
+  ],
+  "formatter": {
+    "uv": {
+      "command": ["uv", "run", "ruff", "format", "$FILE"]
+    }
+  }
+}
